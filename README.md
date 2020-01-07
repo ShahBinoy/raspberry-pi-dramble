@@ -113,6 +113,18 @@ The Raspberry Pi Dramble Kubernetes cluster can function entirely 'air-gapped' f
 
 See the README in the [`testing/presentation`](testing/presentation) directory for instructions for operating the cluster standalone.
 
-## Author
+Dynamic Multi-Network Static IP
 
-This project was started in 2015 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/) and [Ansible for Kubernetes](https://www.ansibleforkubernetes.com).
+interface eth0
+arping 192.168.1.1
+arping 192.168.0.1
+
+profile 192.168.0.1
+static ip_address=192.168.1.178/24
+static routers=192.168.0.1
+static domain_name_servers=10.200.6.15 10.200.7.127
+
+profile 192.168.1.1
+static ip_address=192.168.1.178/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1
